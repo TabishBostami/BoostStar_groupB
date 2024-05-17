@@ -743,3 +743,43 @@ span.psw {
     column-gap: 7rem;
   }
 }
+
+
+/*========== Cart Items ==========*/
+.cart-items {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000e5;
+  position: fixed;
+  z-index: 199;
+  top: 0%;
+  left: 0%;
+  display: none;
+  padding: 1rem;
+}
+
+.cart-items > h1{
+  text-transform: uppercase;
+  color: white;
+}
+
+.cart-items > button {
+  width: fit-content;
+  padding: 0.5rem 1.8rem;
+  border-radius: 10px;
+  position: absolute;
+  right: 2%;
+  top: 2%;
+}
+
+.cartContainer {
+  max-height: 80vh; 
+  overflow-y: auto;
+  padding: 1rem;
+  margin-top: 1rem !important;
+}
+.cartContainer button{
+  width: fit-content;
+  padding: 0.5rem 1.8rem;
+  border-radius: 10px;
+}

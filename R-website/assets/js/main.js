@@ -120,3 +120,85 @@ window.onclick = function(event) {
 }
 
 
+//===================== Add To Cart Functionality ========================================
+
+const AddToCart = (id) => {
+    let cartItems = JSON.parse(localStorage.getItem("cartItem")) || [];
+    const cartElement = document.getElementById(id);
+    const imageSrc = cartElement.querySelector(".menu__img").src;
+    const title = cartElement.querySelector(".menu__name").innerText;
+    const price = cartElement.querySelector(".menu__preci").textContent
+    const item = {
+        src: imageSrc,
+        DishName: title,
+        price: price
+    };
+    cartItems.push(item);
+    localStorage.setItem("cartItem", JSON.stringify(cartItems));
+    alert("Item Added to the cart");
+    showingCartNumber()
+};
+
+function showingCartNumber() {
+    const CartItemsNumber = JSON.parse(localStorage.getItem("cartItem"))
+    const cartno = document.querySelector("#CartItemsNumber")
+    cartno.textContent = CartItemsNumber.length
+}
+
+showingCartNumber()
+
+//===================== Remove From Cart Functionality ========================================
+
+const updateCartDisplay = () => {
+    const no = JSON.parse(localStorage.getItem("cartItem")) || [];
+    const menuContainer = document.querySelector(".menu__container");
+    menuContainer.innerHTML = "";
+
+    no.forEach((element, index) => {
+        const newDiv = document.createElement("div");
+        newDiv.className = "menu__content";
+
+        const newImage = document.createElement("img");
+        newImage.className = "menu__img";
+        newImage.src = element.src;
+
+        const newTitle = document.createElement("h3");
+        newTitle.className = "menu__name";
+        newTitle.textContent = element.DishName;
+
+        const newPrice = document.createElement("span");
+        newPrice.className = "menu__preci";
+        newPrice.textContent = element.price;
+
+        const newAnchor = document.createElement("a");
+        newAnchor.innerHTML = "<i class='bx bx-trash'></i>";
+        newAnchor.className = "button menu__button myBtn"
+        newAnchor.addEventListener("click", (event) => {
+            event.preventDefault()
+            removeItemFromCart(index)
+        });
+
+        newDiv.appendChild(newImage);
+        newDiv.appendChild(newTitle);
+        newDiv.appendChild(newPrice);
+        newDiv.appendChild(newAnchor);
+
+        menuContainer.appendChild(newDiv);
+    });
+};
+
+const removeItemFromCart = (index) => {
+    const no = JSON.parse(localStorage.getItem("cartItem")) || [];
+    if (no.length === 0) {
+        window.location.reload()
+    }else{
+        no.splice(index, 1);
+        localStorage.setItem("cartItem", JSON.stringify(no));
+        updateCartDisplay();
+        showingCartNumber()
+    }
+};
+
+updateCartDisplay()
+
+alert("chaecking")
