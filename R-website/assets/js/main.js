@@ -135,7 +135,6 @@ const AddToCart = (id) => {
     };
     cartItems.push(item);
     localStorage.setItem("cartItem", JSON.stringify(cartItems));
-    alert("Item Added to the cart");
     showingCartNumber()
 };
 
