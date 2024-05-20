@@ -103,7 +103,7 @@ sr.reveal(`.home__data, .home__img,
             .app__data, .app__img,
             .contact__data, .contact__button,
             .footer__content, .main-section,
-             .junnu`, {
+             .junnu, .contact-content`, {
     interval: 200
 })
 
